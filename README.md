@@ -29,5 +29,31 @@ $ sudo apt-add-repository ppa:ansible/ansible
 $ sudo apt-get update
 $ sudo apt-get install ansible
 
-went thur without any errors
+went thur without any errors. to test i tried the following.
 
+echo "127.0.0.1" > ~/ansible_hosts
+export ANSIBLE_INVENTORY=~/ansible_hosts
+ansible all -m ping --ask-pass
+
+fails due to SSH setup.
+192.168.3.118 | FAILED! => {
+    "failed": true,
+    "msg": "ERROR! Using a SSH password instead of a key is not possible because Host Key checking is enabled and sshpass does not support this.  Please add this host's fingerprint to your known_hosts file to manage this host."
+}
+
+I setup ssh for passwordless authentication for user ubuntu and also added the real ip to the ansible_inventory and tried again with
+
+ansible all -m ping 
+
+192.168.3.118 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+127.0.0.1 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+
+Looks like ansible works.
+
+TODO http://movingpackets.net/2014/10/20/getting-started-ansible/
