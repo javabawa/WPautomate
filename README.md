@@ -25,9 +25,13 @@ So i picked up the following steps from the Ansible install guide.
 http://docs.ansible.com/ansible/intro_installation.html#installation
 
 $ sudo apt-get install software-properties-common
+
 $ sudo apt-add-repository ppa:ansible/ansible
+
 $ sudo apt-get update
+
 $ sudo apt-get install ansible
+
 
 went thur without any errors. to test i tried the following.
 
